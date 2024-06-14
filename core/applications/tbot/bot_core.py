@@ -117,7 +117,7 @@ def get_callback_user(call):
                 call_me = CallMe.objects.filter(status='accepted', created_at__gte=first_day, created_at__lte=current_time).all()
                 call_me_users = _get_users_list(call_me)
                 
-                markup = types.InlineKeyboardMarkup(row_width=2)
+                markup = types.InlineKeyboardMarkup(row_width=2) 
                 if datetime.now().strftime('%Y-%m') != current_time.strftime('%Y-%m'):    
                     try:
                         previous = current_time.replace(day=monthrange(int(current_time.strftime("%Y")), int(current_time.strftime("%m")) - 1)[1], month=int(current_time.strftime("%m")) - 1)
