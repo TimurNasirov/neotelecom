@@ -1,0 +1,267 @@
+.infopage {
+  &__title {
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    color: $textColor;
+    @media screen and(max-width: $endPoint) {
+      font-size: 24px;
+    }
+  }
+  &__subtitle{
+    font-size: 15px;
+    text-align: center;
+    margin: 16px 250px;
+    font-weight: normal;
+    line-height: normal;
+    @media screen and(max-width: $endPoint) {
+      font-size: 10px;
+      margin: 7px 0;
+    }
+    &_bg{
+      margin: 7px 0;
+      background-color: $blue;
+      color: #fff;
+      padding: 12px 100px;
+      line-height: 1;
+      @media screen and(max-width: $endPoint) {
+        font-size: 10px;
+        padding: 12px 6px;
+      }
+    }
+  }
+  &__image {
+    margin-bottom: 50px;
+    &-gpon {
+      height: 0;
+      width: 100%;
+      background-size: contain;
+      padding-top: 33%;
+      background-image: url("../img/how_to_gpon.jpg");
+      background-repeat: no-repeat;
+      @media screen and(max-width: $endPoint) {
+        background-image: url("../img/gpon-mobile.jpg");
+        padding-top: 202%;
+      }
+    }
+    &-smart-tv {
+      height: 0;
+      width: 100%;
+      background-size: contain;
+      padding-top: 33%;
+      background-image: url("../img/how_to_smart_tv.jpg");
+      background-repeat: no-repeat;
+      @media screen and(max-width: $endPoint) {
+        background-image: url("../img/smart-tv-mobile.jpg");
+        padding-top: 250%;
+      }
+    }
+    &-4g {
+      height: 0;
+      width: 100%;
+      background-size: contain;
+      padding-top: 33%;
+      background-image: url("../img/how-to-4g.jpg");
+      background-repeat: no-repeat;
+      @media screen and(max-width: $endPoint) {
+        background-image: url("../img/how-to-4g-mobile.png");
+        padding-top: 290%;
+      }
+    }
+  }
+  &__info{
+    display: flex;
+    margin: 35px 0;
+    @media screen and(max-width: $endPoint) {
+      flex-direction: column;
+    }
+    &-image{
+      img{
+        width: 100%;
+      }
+    }
+    &-content{
+      margin-left: 20px;
+    }
+    &-text{
+      font-size: 15px;
+      color: $textColor;
+      line-height: normal;
+      @media screen and(max-width: $endPoint) {
+        font-size: 12px;
+        line-height: normal;
+      }
+    }
+    .btn{
+      font-size: 13px;
+    }
+  }
+  &__footer{
+    &_wrapper{
+      background-color: #F6F6F6;
+    }
+    line-height: 20px;
+    font-size: 15px;
+    padding: 16px 0;
+    border-top: 1px solid #89B7C5;
+    color: #89B7C5;
+    .link{
+      font-size: 15px;
+    }
+  }
+  &__links{
+    margin-top: 25px;
+    &-grid{
+      display: flex;
+      margin-bottom: 20px;
+      @media screen and(max-width: $endPoint) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      &-item{
+        margin-right: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 8px;
+        border: 1px solid #F2F2F2;
+        box-sizing: border-box;
+        width: 255px;
+        overflow: hidden;
+        @media screen and(max-width: $endPoint) {
+          margin-right: 5px;
+          margin-top: 15px;
+          flex-basis: calc(50% - 15px);
+          width: 130px;
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+        &:nth-child(even){
+          @media screen and(max-width: $endPoint) {
+            margin-right: 0px;
+          }
+        }
+        &-title{
+          font-size: 15px;
+          font-weight: bold;
+          color: $textColor;
+          line-height: 20px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 100%;
+        }
+        &-text{
+          line-height: 20px;
+          font-size: 12px;
+          color: #A7A7A7;
+        }
+      }
+    }
+    &-title{
+      font-size: 24px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: $blue;
+      font-weight: normal;
+      @media screen and(max-width: $endPoint) {
+        font-size: 14px;
+        line-height: normal;
+      }
+    }
+    &-content{
+      display: flex;
+      justify-content: center;
+      @media screen and(max-width: $endPoint) {
+        flex-direction: column;
+      }
+      &-item{
+        display: flex;
+        justify-content: flex-start;
+        flex-grow: 1;
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        border-right: 1px solid #BEDCF4;
+        @media screen and(max-width: $endPoint) {
+          border: none;
+        }
+        &:last-child{
+          border: none;
+        }
+        &-title{
+          line-height: normal;
+          font-size: 17px;
+          font-weight: normal;
+          margin: 0;
+          color: #383838;
+          margin-bottom: 16px;
+          @media screen and(max-width: $endPoint) {
+            line-height: normal;
+            font-size: 12px;
+            color: #383838;
+          }
+        }
+        &-list{
+          display: flex;
+          justify-content: space-between;
+          @media screen and(max-width: $endPoint) {
+            flex-wrap: wrap;
+          }
+          &-link{
+            margin-right: 30px;
+            cursor: pointer;
+            transition: all .3s ease;
+            &:last-child{
+              margin-right: 0;
+            }
+            @media screen and(max-width: $endPoint) {
+              margin-right: 20px;
+              margin-bottom: 20px;
+              flex-basis: 31%;
+              &:last-child{
+                margin-right: 20px;
+              }
+            }
+            &-img{
+              text-align: center;
+              padding: 20px 40px;
+              border: 0.75px solid rgba(167,167,167, .3);
+              box-sizing: border-box;
+              border-radius: 5px;
+              transition: all .3s ease;
+              @media screen and(max-width: $endPoint) {
+                padding: 20px 50px;
+              }
+              img{
+                display: block;
+                filter: grayscale(1);
+                transition: all .3s ease;
+              }
+            }
+            &-text{
+              display: block;
+              line-height: 20px;
+              font-size: 12px;
+              color: #A7A7A7;
+              margin-top: 10px;
+              transition: all .3s ease;
+            }
+            &:hover{
+              .neotv__links-content-item-list-link-text{
+                color: $blue;
+              }
+              .neotv__links-content-item-list-link-img{
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+                img{
+                  filter: grayscale(0);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

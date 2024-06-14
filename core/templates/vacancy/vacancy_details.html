@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - {{ vacancy.title }}{% endblock %}
+
+{% block content %}
+  <div class="vacancy-page">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'vacancies' %}" class="breadcrumbs__item">Вакансии</a>
+        <a href="{% url 'vacancy_details' vacancy.pk %}" class="breadcrumbs__item">{{ vacancy.title }}</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <div class="vacancy-details">
+        <h1 class="vacancy-details__title">{{ vacancy.title }}</h1>
+        <div class="vacancy-details__date_wrapper">
+          <span class="vacancy-details__date">{{ vacancy.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+        </div>
+        <div class="vacancy-details__content">
+          {{ vacancy.description|safe }}
+        </div>
+      </div>
+    </div>
+    <div class="vacancy-details__footer">Получить более подробную информацию о новостях Вы можете, обратившись в службу
+      информационной поддержки по номеру <a href="tel:0553976743" class="link link_blue">0 (312) (553) 97 67 43</a>
+    </div>
+  </div>
+{% endblock %}

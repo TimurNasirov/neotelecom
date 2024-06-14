@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Зона охвата {{ map_type|upper }}.{% endblock %}
+
+{% block content %}
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=e8c7525d-728e-43a7-a4cb-71b1b4157a99&lang=ru_RU" type="text/javascript">
+  </script>
+
+  <div class="map">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'map' '4g' %}" class="breadcrumbs__item">Зона охвата</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="join-us__title">Зона охвата</h1>
+      <div id="map" class="map__block" data-map-type="{{ map_type }}"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extend_js %}
+  {#    TODO: Это надо засунуть куда-то в статику, Ромаааа помогии у меня не работает там(#}
+  <script>
+    window.onload = function () {
+      fetch(`/api/v1/map/{{ map_type }}/`)
+          .then(res => res.json())
+          .then(res => setMapParameters(res))
+          .catch(res => alert('Ошибка при загрузке карты!'))
+    };
+
+    function setMapParameters(response) {
+      var yaMap = new ymaps.Map("map", {
+        center: [41.604860, 74.734742],
+        zoom: 7.4,
+        controls: ['zoomControl', 'typeSelector',]
+      });
+
+      var zone = new ymaps.GeoObject({
+            geometry: {
+              type: "Polygon",
+              coordinates: response.map_data,
+              fillRule: "nonZero",
+            },
+          }, {
+            cursor: 'default',
+            stroke: false,
+            fillColor: '83F287',
+            fillOpacity: 0.3,
+            interactiveZIndex: true,
+          }
+      );
+
+      yaMap.geoObjects.add(zone)
+    }
+  </script>
+  {#    <script src="{% static 'map.js' %}"></script>#}
+{% endblock %}

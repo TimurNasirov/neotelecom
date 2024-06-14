@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% load static thumbnail %}
+
+{% block title %}NeoTelecom - Список телеканалов Smart TV и NEOTV.{% endblock %}
+
+{% block content %}
+    <div class="">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+                <a href="{% url 'channels' %}" class="breadcrumbs__item">Список каналов</a>
+            </div>
+            <div class="mobile-back">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+            </div>
+        </div>
+        <div class="channels">
+            <div class="container">
+                <h1 class="channels__title">Список телеканалов</h1>
+                <div class="channels-controls">
+                    <div class="channels-controls__search">
+                        <input placeholder="Найти телеканал..." type="text" id="search-channel">
+                    </div>
+                    <div class="channels-controls__type">
+                        <button data-list-type-btn="grid" class="channels-controls__type-button channels-controls__type-button_active channels-controls__type-button_grid"></button>
+                        <button data-list-type-btn="list" class="channels-controls__type-button channels-controls__type-button_list"></button>
+                    </div>
+                </div>
+                <div class="channels__list_wrapper">
+                    <div data-list-type="grid" class="channels__list channels__list_grid channels__list_show">
+                        {% for channel in channels %}
+                        <div class="single-channel single-channel_grid" data-channel-slug="{{ channel.slug }}" data-channel-name="{{ channel.title }}">
+                            <img class="single-channel__img" src="{{ channel.image|thumbnail_url:'channel' }}" alt="{{ channel.title }}"
+                                title="{{ channel.title }}">
+                            <div class="popup_wrapper">
+                                <div class="popup popup_channel">
+                                    <button class="popup-close"></button>
+                                    <h2 class="popup__title">{{ channel.title }}</h2>
+                                    <div class="popup__text">{{ channel.description|safe }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div data-list-type="list" class="channels__list channels__list_list ">
+                        {% for channel in channels %}
+                        <div class="single-channel single-channel_list" data-channel-slug="{{ channel.slug }}" data-channel-name="{{ channel.title }}">
+                            <img class="single-channel__img" src="{{ channel.image|thumbnail_url:'channel' }}" alt="{{ channel.title }}"
+                                title="{{ channel.title }}">
+                            <div class="single-channel__content">
+                                <h5 class="single-channel__title">{{ channel.title }}</h5>
+                                <div class="single-channel__description">{{ channel.description|safe }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extend_js %}
+    <script src="{% static 'channels.js' %}"></script>
+{% endblock %}

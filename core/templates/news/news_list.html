@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title %}NeoTelecom - Новости и объявления компании.{% endblock %}
+
+{% block content %}
+    <div class="news-page">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+                <a href="{% url 'news' %}" class="breadcrumbs__item">Новости</a>
+            </div>
+            <div class="mobile-back">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+            </div>
+            <h1 class="news-page__title">Новости компании</h1>
+            <div class="tab-container">
+                <div class="tab-selector">
+                    <span data-tab-name="all" class="tab-selector-item tab-selector-item_active">Все</span>
+                    <span data-tab-name="tech" class="tab-selector-item">Технические</span>
+                    <span data-tab-name="media" class="tab-selector-item">Медиа</span>
+                </div>
+                <div data-tab-item="all" class="tab-item tab-item_active">
+                    {% for news in all_news %}
+                        <div class="news-page__list">
+                            <div class="news-page__item">
+                                <span class="news-page__item-category">{{ news.get_news_type_display }}</span>
+                                <a href="{% url 'news_details' news.pk %}" class="news-page__item-title">{{ news.title }}</a>
+                                <div class="news-page__item-description">
+                                    {{ news.body|safe }}
+                                </div>
+                                <span class="news-page__item-date">{{ news.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div data-tab-item="tech" class="tab-item">
+                    {% for news in tech_news %}
+                        <div class="news-page__list">
+                            <div class="news-page__item">
+                                <span class="news-page__item-category">{{ news.get_news_type_display }}</span>
+                                <a href="{% url 'news_details' news.pk %}" class="news-page__item-title">{{ news.title }}</a>
+                                <div class="news-page__item-description">
+                                    {{ news.body|safe }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div data-tab-item="media" class="tab-item">
+                    {% for news in media_news %}
+                        <div class="news-page__list">
+                            <div class="news-page__item">
+                                <span class="news-page__item-category">{{ news.get_news_type_display }}</span>
+                                <a href="{% url 'news_details' news.pk %}" class="news-page__item-title">{{ news.title }}</a>
+                                <div class="news-page__item-description">
+                                    {{ news.body|safe }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+variables:
+  # DataBase ENV for CI
+  POSTGRES_DB: neotv
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+  POSTGRES_USER: root
+  POSTGRES_PASSWORD: root
+
+  CONTAINER_IMAGE: $CI_REGISTRY_IMAGE:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: "overlay"
+  before_script:
+    - "docker ps"
+    - "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+  script:
+    - docker build --rm -t $CONTAINER_IMAGE .
+    - docker push $CONTAINER_IMAGE
+  only:
+    - master
+
+test:
+  services:
+    - postgres:latest
+    - redis:latest
+  stage: test
+  image: $CONTAINER_IMAGE
+  script:
+    - cd /core &&  python manage.py test
+  only:
+    - master
+
+staging:
+ stage: deploy
+ image: gitlab/dind:latest
+ services:
+    - docker:dind
+ before_script:
+    - mkdir -p ~/.ssh
+    - echo "$SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+ script:
+    - scp -r docker-compose.yml docker-app@$SERVER_HOST:/srv/neotelecom/docker-compose.yml
+    - scp -r etc/ docker-app@$SERVER_HOST:/srv/neotelecom
+    - ssh docker-app@$SERVER_HOST "cd /srv/neotelecom/etc/ && /bin/sh make_env.sh root root neotv postgres-db prod $BOT_API_KEY $BOT_CHAT_ID"
+    - ssh docker-app@$SERVER_HOST "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY; cd /srv/neotelecom/; docker-compose pull; docker-compose up -d; docker-compose exec -T core ./manage.py migrate; docker-compose exec -T core ./manage.py collectstatic --noinput"
+ only:
+    - master

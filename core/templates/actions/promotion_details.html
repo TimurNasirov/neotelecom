@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% load thumbnail %}
+
+{% block title %}NeoTelecom - {{ promotion.title }}{% endblock %}
+
+{% block content %}
+  <div class="promotions">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'promotions' %}" class="breadcrumbs__item">Акции</a>
+        <a href="{% url 'promotion_details' promotion.pk %}" class="breadcrumbs__item">{{ promotion.title }}</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="promotions__title">Детали акции</h1>
+      <div class="promotion-details">
+        <div class="promotion-details__image">
+          <img src="{{ promotion.image|thumbnail_url:'promotion_details' }}" alt="">
+        </div>
+        <div class="promotion-details__content">
+          <h2 class="promotion-details__title">{{ promotion.title }}</h2>
+          <div class="promotion-details__description">
+            {{ promotion.description|safe }}
+          </div>
+          <span class="promotion-details__date">
+            {{ promotion.created_at|date:"SHORT_DATE_FORMAT" }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="promotion-details__info">
+      <div class="container">
+        <p>Получить более подробную информацию об акциях, Вы можете, обратившись в службу информационной поддержки по номеру
+          0 (312) 97 67 43</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer_wrapper">
+      <ul class="footer-list">
+        <li class="footer-list__item footer-list__item_title">О компании</li>
+        <li class="footer-list__item"><a href="/about_company/">История компании</a></li>
+        <li class="footer-list__item"><a href="{% url 'vacancies' %}">Вакансии</a></li>
+      </ul>
+      <ul class="footer-list">
+        <li class="footer-list__item footer-list__item_title">GPON</li>
+        <li class="footer-list__item"><a href="{% url 'tariffs' %}#gpon">Тарифы</a></li>
+        <li class="footer-list__item"><a href="{% url 'join_us' %}">Подключить</a></li>
+        <li class="footer-list__item"><a href="{% url 'map' 'gpon' %}">Зона охвата</a></li>
+        <li class="footer-list__item"><a href="{% url 'handbook_category' 'gpon' %}">Справочник</a></li>
+      </ul>
+      <ul class="footer-list">
+        <li class="footer-list__item footer-list__item_title">SmartTV</li>
+        <li class="footer-list__item"><a href="/smart-tv/">Телевидение</a></li>
+        <li class="footer-list__item"><a href="{% url 'tariffs' %}#smart">Тарифы</a></li>
+        <li class="footer-list__item"><a href="{% url 'join_us' %}">Подключение</a></li>
+        <li class="footer-list__item"><a href="{% url 'map' 'smart_tv' %}">Зона охвата</a></li>
+        <li class="footer-list__item"><a href="{% url 'channels' %}">Список каналов</a></li>
+        <li class="footer-list__item"><a href="{% url 'handbook_category' 'smart_tv' %}">Справочник</a></li>
+      </ul>
+      <ul class="footer-list">
+        <li class="footer-list__item footer-list__item_title">NEO TV</li>
+        <li class="footer-list__item"><a href="/neotv/">Телевидение</a></li>
+        <li class="footer-list__item"><a href="{% url 'tariffs' %}#smart">Тарифы</a></li>
+        <li class="footer-list__item"><a href="{% url 'join_us' %}">Подключение</a></li>
+        <li class="footer-list__item"><a href="{% url 'map' 'smart_tv' %}">Зона охвата</a></li>
+        <li class="footer-list__item"><a href="{% url 'channels' %}">Список каналов</a></li>
+        <li class="footer-list__item"><a href="{% url 'handbook_category' 'smart_tv' %}">Справочник</a></li>
+      </ul>
+      <ul class="footer-list">
+        <li class="footer-list__item footer-list__item_title">4G интернет</li>
+        <li class="footer-list__item"><a href="{% url 'tariffs' %}#4g">Тарифы</a></li>
+        <li class="footer-list__item"><a href="{% url 'join_us' %}">Подключение</a></li>
+        <li class="footer-list__item"><a href="{% url 'map' '4g' %}">Зона охвата</a></li>
+        <li class="footer-list__item"><a href="{% url 'handbook_category' '4g' %}">Абонентам</a></li>
+      </ul>
+      <ul class="footer-list footer-list_social">
+        <li class="footer-list__item footer-list__item_title">Социальные сети</li>
+        <li class="footer-list__item"><a href="https://www.facebook.com/neotelecom.kg/" target="_blank"><img src="{% static 'img/social/fb.svg' %}" alt="facebook"></a></li>
+        <li class="footer-list__item"><a href="https://www.instagram.com/neotelecom.kg/" target="_blank"><img src="{% static 'img/social/instagram.svg' %}" alt="instagramm"></a></li>
+        <li class="footer-list__item"><a href="https://ok.ru/group/54555984920663" target="_blank"><img src="{% static 'img/social/ok.svg' %}" alt="odnoklassniki"></a></li>
+        <li class="footer-list__item"><a href="https://t.me/Neotelecomkg_Smarttv" target="_blank"><img src="{% static 'img/social/tg.svg' %}" alt="telegram"></a></li>
+        <li class="footer-list__item footer-list__item_title">Лицензии</li>
+        <li class="footer-list__item"><a>№ 18 - 0312 ГАС КР</a></li>
+        <br>
+        <li class="footer-list__item"><a>№ 15 - 1265 ГАС КР</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+<footer class="mobile-footer">
+  <div class="container">
+    <div class="mobile-footer_wrapper">
+      <div class="mobile-footer__item">
+        <span class="mobile-footer__item-title">О компании</span>
+        <div class="mobile-footer__item-content">
+          <a href="/about_company/" class="mobile-footer__item-content-link">История компании</a>
+          <a href="{% url 'vacancies' %}" class="mobile-footer__item-content-link">Вакансии</a>
+        </div>
+      </div>
+      <div class="mobile-footer__item">
+        <span class="mobile-footer__item-title">SmartTV HD</span>
+        <div class="mobile-footer__item-content">
+          <a href="/smart-tv/" class="mobile-footer__item-content-link">Телевидение</a>
+          <a href="{% url 'tariffs' %}#smart" class="mobile-footer__item-content-link">Тарифы</a>
+          <a href="{% url  'join_us' %}" class="mobile-footer__item-content-link">Подключение</a>
+          <a href="{% url 'map' 'smart_tv' %}" class="mobile-footer__item-content-link">Зона охвата</a>
+          <a href="{% url 'handbook_category' 'smart_tv' %}" class="mobile-footer__item-content-link">Как оплатить</a>
+          <a href="{% url 'channels' %}" class="mobile-footer__item-content-link">Список каналов</a>
+          <a href="{% url 'handbook_category' 'smart_tv' %}" class="mobile-footer__item-content-link">Справочник</a>
+        </div>
+      </div>
+      <div class="mobile-footer__item">
+        <span class="mobile-footer__item-title">Интернет</span>
+        <div class="mobile-footer__item-content">
+          <a href="{% url 'tariffs' %}#4g" class="mobile-footer__item-content-link">Тарифы</a>
+          <a href="{% url  'join_us' %}" class="mobile-footer__item-content-link">Подключение</a>
+          <a href="{% url 'map' '4g' %}" class="mobile-footer__item-content-link">Зона охвата</a>
+          <a href="{% url 'handbook_category' '4g' %}" class="mobile-footer__item-content-link">Как оплатить</a>
+          <a href="{% url 'handbook_category' '4g' %}" class="mobile-footer__item-content-link">Справочник</a>
+        </div>
+      </div>
+      <div class="mobile-footer__item">
+        <span class="mobile-footer__item-title">Абонентам</span>
+        <div class="mobile-footer__item-content">
+          <a href="{% url 'news' %}" class="mobile-footer__item-content-link">Новости</a>
+          <a href="{% url 'promotions' %}" class="mobile-footer__item-content-link">Акции</a>
+          <a href="{% url 'join_us' %}" class="mobile-footer__item-content-link">Оставить заявку</a>
+        </div>
+      </div>
+      <div class="mobile-footer__item">
+        <span class="mobile-footer__item-title mobile-footer__item-title_social">Социальные сети</span>
+        <div class="mobile-footer__item-social">
+          <a href="https://www.facebook.com/neotelecom.kg/" target="_blank" class="mobile-footer__item-social-link"><img src="{% static 'img/social/fb.svg' %}" alt="facebook"></a>
+          <a href="https://www.instagram.com/neotelecom.kg/" target="_blank" class="mobile-footer__item-social-link"><img src="{% static 'img/social/instagram.svg' %}" alt="instagramm"></a>
+          <a href="https://ok.ru/group/54555984920663" target="_blank" class="mobile-footer__item-social-link"><img src="{% static 'img/social/ok.svg' %}" alt="odnoklassniki"></a>
+          <a href="https://t.me/Neotelecomkg_Smarttv" target="_blank" class="mobile-footer__item-social-link"><img src="{% static 'img/social/tg.svg' %}" alt="telegram"></a>
+        </div>
+        <span class="mobile-footer__item-title mobile-footer__item-title_social">Лицензии</span>
+        <div>
+          <span class="mobile-footer__item-title mobile-footer__item-title_block mobile-footer__item-title_social">№ 18 - 0312 ГАС КР</span>
+          <span class="mobile-footer__item-title mobile-footer__item-title_block mobile-footer__item-title_social">№ 15 - 1265 ГАС КР</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+{% load static %}
+<div class="news-item">
+  <img src="{% if news_item.news_type == 'tech' %}{% static 'img/news/media_crop.jpg' %}{% else %}{% static 'img/news/tech_crop.jpg' %}{% endif %}"
+       alt="{{ news_item.title }}" class="news-item__img">
+  <div class="news-item__content">
+    <span class="news-item__subtitle">{{ news_item.get_news_type_display }}</span>
+    <span class="news-item__title">{{ news_item.title|truncatechars:50 }}</span>
+    <span class="news-item__description">{{ news_item.body|safe }}</span>
+      <a href="{% url 'news_details' news_item.pk %}" class="news-item__link">Читать</a>
+    <span class="news-item__date">{{ news_item.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+  </div>
+</div>

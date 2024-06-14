@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - {{ news.title }}{% endblock %}
+
+{% block content %}
+  <div class="news-page">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'news' %}" class="breadcrumbs__item">Новости</a>
+        {# TODO: Тут надо запилить крошку на тип новости #}
+        <a href="{% url 'news_details' news.pk %}" class="breadcrumbs__item">{{ news.get_news_type_display }}</a>
+        <a href="{% url 'news_details' news.pk %}" class="breadcrumbs__item">{{ news.title|truncatechars:50 }}</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="news-page__title">Новости компании</h1>
+      <div class="news-details">
+        <h2 class="news-details__title">{{ news.title }}</h2>
+        <div class="news-details__content">
+          {{ news.body|safe }}
+        </div>
+        <div class="news-details__date_wrapper">
+          <span class="news-details__date">{{ news.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="news-details__footer">Получить более подробную информацию о новостях Вы можете, обратившись в службу
+      информационной поддержки по номеру <a href="tel:0553976743" class="link link_blue">0 (312) (553) 97 67 43</a>
+    </div>
+  </div>
+{% endblock %}

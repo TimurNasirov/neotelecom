@@ -1,0 +1,14 @@
+{% load static thumbnail %}
+
+<div class="container container_banner">
+    <div class="banner-container">
+        <div class="swiper-wrapper">
+            {% for banner in banners %}
+            <a {% if banner.url %}href="{{ banner.url }}"{% endif %} class="swiper-slide">
+                <img style="width: 100%;" src="{{ banner.image|thumbnail_url:'banner'}}" alt="{{ banner.name }}">
+            </a>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination swiper-pagination_banner"></div>
+    </div>
+</div>

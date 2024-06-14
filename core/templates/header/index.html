@@ -1,0 +1,117 @@
+{% load static %}
+<header class="header">
+  <div class="header__controls">
+   <div class="header__controls_wrapper">
+      <div class="header__controls-hidden">1</div>
+      <div class="header__controls-city">
+        <a href="{% url 'city_switcher' 'bishkek' %}" class="header__controls-city-link {% if request.COOKIES.city == 'bishkek' %}header__controls-city-link_active{% endif %}">Бишкек</a>
+        <span class="header__controls-city-line">|</span>
+        <a href="{% url 'city_switcher' 'osh' %}" class="header__controls-city-link {% if request.COOKIES.city == 'osh' %}header__controls-city-link_active{% endif %}">Ош</a>
+      </div>
+      <div class="header__controls-phone">
+        <a href="tel:0553976743" class="header__controls-phone-link link link_blue"><span>0</span><div class="header__controls-phone-link-codes"><span>(312)</span><span>(553)</span></div><span>97 67 43</span></a>
+      </div>
+   </div>
+  </div>
+  <div class="container">
+    <div class="header__info">
+      <div class="header__info-logo">
+        <a href="{% url 'main_page' %}" class="header__info-logo-link">
+          <img src="{% static 'img/neotelecom-logo.svg' %}" alt="neotelecom-logo" class="header__info-logo-img">
+        </a>
+      </div>
+      <div class="header__info-cabinet">
+        <a href="http://my.neotelecom.kg" target="_blank" class="btn btn_blue">Личный кабинет</a>
+      </div>
+      <button class="header__burger-button"></button>
+    </div>
+    <div class="header__menu">
+      <ul class="header__menu-list">
+        <li class="header__menu-item">
+          <img src="{% static 'img/icons/touch.svg' %}" alt="join_us" class="header__menu-item-img">
+          <span class="header__menu-item-title">Подключиться</span>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item"><a href="{% url 'tariffs' %}">Тарифы</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'join_us' %}">Оставить заявку</a></li>
+              <li class="header__menu-item-content-item"><a id="callback-modal">Заказать звонок</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="header__menu-item">
+          <a href="/gpon/">
+            <img src="{% static 'img/icons/rocket.svg' %}" alt="GPON" class="header__menu-item-img">
+            <span class="header__menu-item-title">GPON Интернет</span>
+          </a>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item "><a href="{% url 'tariffs' %}#gpon">Тарифы</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'join_us' %}#gpon">Подключить</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'map' 'gpon' %}">Зона охвата</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'gpon' %}">Как оплатить</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="header__menu-item">
+          <a href="/smart-tv/">
+            <img src="{% static 'img/icons/smart-tv.svg' %}" alt="Smart_TV" class="header__menu-item-img">
+            <span class="header__menu-item-title">Smart TV</span>
+          </a>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item"><a href="{% url 'tariffs' %}#smart">Тарифы</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'join_us' %}#smart">Подключить</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'map' 'smart_tv' %}">Зона охвата</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'channels' %}">Список каналов</a></li>
+              <li class="header__menu-item-content-item"><a href="/equipment/">Оборудование</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'smart_tv' %}">Как оплатить</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="header__menu-item">
+          <a href="/neotv/">
+            <img src="{% static 'img/icons/smartphone.svg' %}" alt="NEO_TV" class="header__menu-item-img">
+            <span class="header__menu-item-title">NEO TV</span>
+          </a>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item"><a href="/neotv/">Скачать</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'join_us' %}#neo">Подключить</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'tariffs' %}#neo">Тарифные планы</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'channels' %}">Список каналов</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'neo_tv' %}">Как оплатить</a></li>
+
+            </ul>
+          </div>
+        </li>
+        <li class="header__menu-item">
+          <a href="/4g_internet/">
+            <img src="{% static 'img/icons/antenna.svg' %}" alt="4g-internet" class="header__menu-item-img">
+            <span class="header__menu-item-title">4G Интернет</span>
+          </a>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item"><a href="{% url 'tariffs' %}#4g">Тарифы</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'join_us' %}#4g">Подключить</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'map' '4g' %}">Зона охвата</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' '4g' %}">Как оплатить</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="header__menu-item">
+          <img src="{% static 'img/icons/info.svg' %}" alt="" class="header__menu-item-img">
+          <span class="header__menu-item-title">Справочник</span>
+          <div class="header__menu-item-content">
+            <ul class="header__menu-item-content-list">
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'smart_tv' %}">Smart TV</a></li>
+                <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'neo_tv' %}">NEO TV</a></li>
+                <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'gpon' %}">GPON интернет</a></li>
+                <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' '4g' %}">4G интернет</a></li>
+              <li class="header__menu-item-content-item"><a href="{% url 'handbook_category' 'about_us' %}">О компании</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

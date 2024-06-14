@@ -1,0 +1,232 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Тарифы телевидения Smart TV, NEO TV. И интернета GPON, WIMAX, 4G. | Тарифы и
+  Цены.{% endblock %}
+{% block canonical_link %}
+  <link rel="canonical" href="{% url 'tariffs' %}"/>{% endblock %}
+{% block content %}
+  <div class="tariffs">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a class="breadcrumbs__item">Тарифы</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="tariffs__title">Тарифы</h1>
+      <div class="tariffs__selector">
+        <div class="tariffs__selector-content">
+          <a href="{% url 'city_switcher' 'bishkek' %}"
+             class="tariffs__selector-city-link {% if request.COOKIES.city == 'bishkek' %}tariffs__selector-city-link_active{% endif %}">Бишкек</a>
+          <span class="tariffs__selector-city-line">|</span>
+          <a href="{% url 'city_switcher' 'osh' %}"
+             class="tariffs__selector-city-link {% if request.COOKIES.city == 'osh' %}tariffs__selector-city-link_active{% endif %}">Ош</a>
+        </div>
+      </div>
+    </div>
+    <div class="tab-container">
+      <div class="container">
+        <div class="tab-selector tab-selector_tariffs">
+          <span data-tab-name="gpon" class="tab-selector-item tab-selector-item_active">GPON</span>
+          <span data-tab-name="4g" class="tab-selector-item">4G Интернет</span>
+          <span data-tab-name="smart" class="tab-selector-item">Smart TV</span>
+          <span data-tab-name="neo" class="tab-selector-item">NEO TV</span>
+        </div>
+      </div>
+      <div data-tab-item="gpon" class="tab-item tab-item_active">
+        <div class="container">
+          <div class="tariffs-content">
+            <div class="tariffs-content__list">
+              <div class="tariffs-content__item tariffs-content__item_title">
+                <span>Название</span>
+                <span>Скорость</span>
+                <span class="tooltip_wrapper">NEO TV <b class="req-el">*</b> <a class="tooltip">NEO TV входит в стоимость тарифных планов</a></span>
+                <span class="tooltip_wrapper">Smart TV<b class="req-el">*</b> <a class="tooltip">Smart TV входит в стоимость тарифных планов</a></span>
+                <span>Стоимость</span>
+              </div>
+              {% for tariff in gpon %}
+                <div class="tariffs-content__item">
+                  <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                  {% if tariff.speed <= 0 %}
+                    <span>-</span>
+                  {% else %}
+                    <span>До {{ tariff.speed }} мб/с</span>
+                  {% endif %}
+                  <span>{{ tariff.extra_neo_tv }}</span>
+                  <span>{{ tariff.extra_smart_tv }}</span>
+                  <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="tariffs-info">
+          <div class="container">
+            <p>* Возможность просматривать телевидение одновременно с нескольких устройств.</p>
+            <p>** NEO TV входит в стоимость тарифных планов.</p>
+            <ul>
+              <li>Цены указаны в сомах Кыргызской Республики (KGS) с учетом НДС.</li>
+              <li>Расчетный период за тарифные планы составляет 30 последовательных календарных дней с даты внесения
+                полной абонентской платы по выбранному тарифному плану и активации учетной записи.
+              </li>
+              <li>По окончании расчетного периода абонентская плата начисляется посуточно и срок пользования услугой
+                автоматически продлевается на количество суток до окончания денежных средств на балансе лицевого
+                счета абонента.
+              </li>
+              <li>Стоимость абонентской платы дополнительной ТВ-точки - 300 сом в месяц.</li>
+            </ul>
+
+            <p>Проверка баланса лицевого счета доступна в личном кабинете my.neotelecom.kg.</p>
+
+            <p>Смену тарифного плана можно произвести в любое время независимо от даты активации услуги.
+              Для изменения тарифного плана обратитесь в службу поддержки абонентов по телефонам 0553 97 67 43, 0312 97 67 43</p>
+          </div>
+        </div>
+      </div>
+      <div data-tab-item="4g" class="tab-item">
+        <div class="container">
+          <div class="tariffs-content">
+            <div class="tariffs-content__list">
+              <div class="tariffs-content__item tariffs-content__item_title">
+                <span>Название</span>
+                <span>Скорость</span>
+                <span class="tooltip_wrapper">NEO TV <b class="req-el">*</b> <a class="tooltip">NEO TV входит в стоимость тарифных планов</a></span>
+                <span class="tooltip_wrapper">Smart TV<b class="req-el">*</b> <a class="tooltip">Smart TV входит в стоимость тарифных планов</a></span>
+                <span>Стоимость</span>
+              </div>
+              {% for tariff in 4g %}
+                <div class="tariffs-content__item">
+                  <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                  {% if tariff.speed <= 0 %}
+                    <span>-</span>
+                  {% else %}
+                    <span>До {{ tariff.speed }} мб/с</span>
+                  {% endif %}
+                  <span>{{ tariff.extra_neo_tv }}</span>
+                  <span>{{ tariff.extra_smart_tv }}</span>
+                  <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="tariffs-info">
+          <div class="container">
+            <p>* Возможность просматривать телевидение одновременно с нескольких устройств.</p>
+            <p>** NEO TV входит в стоимость тарифных планов.</p>
+            <ul>
+              <li>Цены указаны в сомах Кыргызской Республики (KGS) с учетом НДС.</li>
+              <li>Расчетный период за тарифные планы составляет 30 последовательных календарных дней с даты внесения
+                полной абонентской платы по выбранному тарифному плану и активации учетной записи.
+              </li>
+              <li>По окончании расчетного периода абонентская плата начисляется посуточно и срок пользования услугой
+                автоматически продлевается на количество суток до окончания денежных средств на балансе лицевого
+                счета абонента.
+              </li>
+              <li>Стоимость абонентской платы дополнительной ТВ-точки - 300 сом в месяц.</li>
+            </ul>
+
+            <p>Проверка баланса лицевого счета доступна в личном кабинете my.neotelecom.kg.</p>
+
+            <p>Смену тарифного плана можно произвести в любое время независимо от даты активации услуги.
+              Для изменения тарифного плана обратитесь в службу поддержки абонентов по телефонам 0553 97 67 43, 0312 97 67 43.</p>
+          </div>
+        </div>
+      </div>
+      <div data-tab-item="smart" class="tab-item">
+        <div class="container">
+          <div class="tariffs-content">
+            <div class="tariffs-content__list">
+              <div class="tariffs-content__item tariffs-content__item_title">
+                <span>Название</span>
+                <span>Количество телеканалов</span>
+                <span>Стоимость</span>
+              </div>
+              {% for tariff in smart_tv %}
+                <div class="tariffs-content__item">
+                  <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                  <span class="tariffs-content__item-count">{{ tariff.get_channels_count }}</span>
+                  <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                </div>
+              {% endfor %}
+              {% if ext_smart_tv %}
+                <div class="tariffs-content__item tariffs-content__item_title tariffs-content__item_extra">
+                  <span> Дополнительные тарифы:</span>
+                </div>
+                {% for tariff in ext_smart_tv %}
+                  <div class="tariffs-content__item">
+                    <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                    <span class="tariffs-content__item-count">{{ tariff.get_channels_count }}</span>
+                    <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <span class="tariffs-content__help">Ознакомиться со списком телеканалов Вы можете <a
+                    href="{% url 'channels' %}">здесь</a>.</span>
+          </div>
+        </div>
+        <div class="tariffs-info">
+          <div class="container">
+            <p>Для смены тарифного плана:</p>
+            <p>- обратитесь в службу поддержки абонентов по телефону 0312 97 67 43 или 0553 97 67 43, назовите оператору
+            номер своей смарт карты и пароль.
+            Запланированная смена тарифного плана производится с указанной Вами даты и осуществляется бесплатно.</p>
+            <p>Срочная смена тарифного плана производится в момент Вашего обращения и оплачивается в размере стоимости
+            одного дня просмотра выбранного тарифного плана.</p>
+            <p><strong>ВНИМАНИЕ!</strong> Для смены тарифного плана через службу поддержки абонентов, необходимо наличие установленного
+            пароля на смарт-карте (индивидуальный набор от 1 до 6 цифр). Установка пароля производится во время
+            подключения к сети «Smart tv HD» и фиксируется в Абонентском договоре или по заявлению в абонентском отделе по адресу: г. Бишкек, ул. Исакеева 18/3, блок 10
+            или в дилерском отделе г. Ош, ул. Навои 47. Установка пароля осуществляется при
+            наличии паспорта и номера смарты.</p>
+            <p>Подробную информацию о способах оплаты за услуги цифрового телевидения «Smart tv HD» можно получить <a href="{% url 'handbook_category' 'smart_tv' %}">здесь</a>.</p>
+          </div>
+        </div>
+      </div>
+      <div data-tab-item="neo" class="tab-item">
+        <div class="container">
+          <div class="tariffs-content">
+            <div class="tariffs-content__list">
+              <div class="tariffs-content__item tariffs-content__item_title">
+                <span>Название</span>
+                <span>Количество телеканалов</span>
+                <span>Стоимость</span>
+              </div>
+              {% for tariff in neo_tv %}
+                <div class="tariffs-content__item">
+                  <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                  <span class="tariffs-content__item-count">{{ tariff.get_channels_count }}</span>
+                  <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                </div>
+              {% endfor %}
+            </div>
+            {% if ext_neo_tv %}
+              <div class="tariffs-content__item tariffs-content__item_title tariffs-content__item_extra">
+                <span> Дополнительные тарифы:</span>
+              </div>
+              {% for tariff in ext_neo_tv %}
+                <div class="tariffs-content__item">
+                  <span class="tariffs-content__item-name">{{ tariff.name }}</span>
+                  <span class="tariffs-content__item-count">{{ tariff.get_channels_count }}</span>
+                  <span class="tariffs-content__item-price">{{ tariff.get_price }}</span>
+                </div>
+              {% endfor %}
+            {% endif %}
+            <span class="tariffs-content__help">Ознакомиться со списком телеканалов Вы можете <a
+                    href="{% url 'channels' %}">здесь</a>.</span>
+          </div>
+        </div>
+        <div class="tariffs-info">
+          <div class="container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extend_js %}
+  <script src="{% static 'tariffs.js' %}"></script>
+{% endblock %}

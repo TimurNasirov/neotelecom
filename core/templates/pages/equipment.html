@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Оборудование для Smart TV.{% endblock %}
+
+{% block content %}
+<div class="">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="/" class="breadcrumbs__item">Главная</a>
+      <a href="/equipment/" class="breadcrumbs__item">Оборудование</a>
+    </div>
+    <div class="mobile-back">
+      <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+    </div>
+  </div>
+    <div class="equipment">
+      <div class="container">
+        <h1 class="equipment__title">Оборудование Smart TV</h1>
+      </div>
+      <div class="equipment__info">
+        <div class="container">
+          Для приёма сигнала цифрового телевидения «Smart tv HD» необходим комплект оборудования, состоящий из: конвертера,
+          рефлектора (антенны), цифрового приемника и смарт-карты.
+        </div>
+      </div>
+      <div class="container">
+        <div class="equipment__list">
+          <div class="equipment__item">
+            <div class="equipment__item-img"><img src="{% static 'img/equipment/converter.png' %}"></div>
+            <div class="equipment__item-content">
+              <h4 class="equipment__item-title">Конвертер</h4>
+              <div class="equipment__item-description">Устройство для приема сигнала, объединяющий в себе предусилитель сигнала, принимаемого от телестанции цифрового
+              телевидения «Smart tv HD», и понижающий конвертер, служащий для преобразования частоты, с целью передачи с наименьшими
+              потерями по кабелю до абонента.</div>
+            </div>
+          </div>
+          <div class="equipment__item">
+            <div class="equipment__item-img"><img src="{% static 'img/equipment/antenna.png' %}"></div>
+            <div class="equipment__item-content">
+              <h4 class="equipment__item-title">Рефлекторы(антенны)</h4>
+              <div class="equipment__item-description">Применяются в составе приемо-передающей антенны в качестве отражающего зеркала. Приёмные антенны стандарта МИТРИС
+              бывают различной конструкции, она в первую очередь зависит от коэффициента усиления, которую должна давать антенна.
+              Для улучшения приёмных характеристик микроволновые антенны собираются на параболическом рефлекторе. Антенна может быть
+              установлена в любом удобном месте, единственное требование для монтажа - обеспечение прямой видимости
+              на базовые станции компании.</div>
+            </div>
+          </div>
+          <div class="equipment__item">
+            <div class="equipment__item-img"><img src="{% static 'img/equipment/decoder.png' %}" style="height:  50%;"></div>
+            <div class="equipment__item-content">
+              <h4 class="equipment__item-title">Цифровой приемник (декодер)</h4>
+              <div class="equipment__item-description">Примером цифрового приемника (декодера), подходящего для приема сигнала «Smart tv HD» является XCruiser XD SR 3750 HD
+              PVR. Данная модель полностью совместима с международным цифровым видеостандартом (DVB) и таким образом может принимать
+              цифровое вещание в соответствии с этим стандартом. Данное устройство подключается к антенне и телевизору.</div>
+            </div>
+          </div>
+          <div class="equipment__item">
+            <div class="equipment__item-img"><img src="{% static 'img/equipment/smart_card.png' %}"></div>
+            <div class="equipment__item-content">
+              <h4 class="equipment__item-title">Смарт-карта</h4>
+              <div class="equipment__item-description">Представляет собой пластиковую карту 
+                со встроенным микрочипом. Она является обязательной составляющей приёмного оборудования, 
+                и необходима для декодирования телеканалов «Smart TV HD». На карте указан уникальный номер
+                (лицевой счет), который необходимо указывать каждый раз при внесении абонентской платы, 
+                а также при обращении в службу информационной поддержки абонентов «Smart tv HD».</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="equipment__footer">
+        <div class="container">
+          <p>Получить более подробную информацию о новостях, Вы можете обратившись в службу информационной поддержки по номеру 0
+            (312) 97 67 43</p>
+          <p>Подключение абонентского оборудования осуществляется при наличии технической возможности получения сигнала от
+            базовой
+            станции на месте подключения. Проверить, входит ли ваш адрес в зону покрытия сети цифрового телевидения «Smart TV HD»
+            можно <a class="link link_blue" href="{% url 'map' 'smart_tv' %}">здесь</a>. Сроки выполнения работ - в порядке очередности с момента подачи
+            заявки на подключение.</p>
+          <p>ВНИМАНИЕ! «Smart tv HD» сообщает, что не гарантирует прием сигнала и не несет никакой ответственности за правильную
+            работу устройств приобретенных индивидуально. Для получения качественного сервиса рекомендуем обращаться к дилерам,
+            работающим по соглашению со «Smart tv HD».</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

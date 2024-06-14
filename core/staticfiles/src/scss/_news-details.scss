@@ -1,0 +1,82 @@
+.news-details {
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  @media screen and(max-width: $endPoint) {
+    width: auto;
+    padding-bottom: 0;
+    font-size: $defaultTextSize;
+  }
+  &__title {
+    margin: 32px 0 0;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: normal;
+    color: $blue;
+    @media screen and(max-width: $endPoint) {
+      font-size: $defaultTextSize;
+    }
+  }
+  &__category {
+    font-size: 15px;
+    line-height: 20px;
+    color: $grayText;
+    @media screen and(max-width: $endPoint) {
+      margin-top: 8px;
+      font-size: 12px;
+    }
+  }
+  &__content {
+    margin-top: 14px;
+    font-size: $defaultTextSize;
+    line-height: 20px;
+    color: $textColor;
+    @media screen and(max-width: $endPoint) {
+      font-size: 12px;
+    }
+  }
+  &__date {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px;
+    color: #89b7c5;
+    &_wrapper {
+      margin: 8px 0;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      background-image: url(../img/icons/calendar.svg);
+      background-size: cover;
+      transform: translateY(-50%);
+    }
+    @media screen and(max-width: $endPoint) {
+      font-size: 12px;
+    }
+  }
+  &__footer {
+    margin: auto;
+    padding: 16px;
+    font-size: 15px;
+    color: #89b7c5;
+    text-align: center;
+    border-top: 1px solid #89b7c5;
+    background-color: #F6F6F6;
+    a {
+      color: $blue;
+      text-decoration: underline;
+      transition: all 0.3s ease;
+      &:hover {
+        color: darken($blue, 10%);
+      }
+    }
+    @media screen and(max-width: $endPoint) {
+      text-align: left;
+      font-size: 10px;
+    }
+  }
+}

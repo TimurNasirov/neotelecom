@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}NeoTelecom - Цифровое телевидение и безлимитный доступ в интернет{% endblock %}</title>
+    <meta name="keywords" content="neotelecom, smart, tv, смарт, тв, киргизия, ош, бишкек, телевидение, цифровое, кыргызстан, hd, безлимитный, быстрый, интернет, metro, kyrgyzstan, wimax, 4g, gpon">
+    <meta name="description" content="NeoTelecom - предоставление услуг цифрового телевидения Smart TV, NEO TV и безлимитного доступа в интернет с применением технологий GPON, WiMax, 4G.">
+    {% block canonical_link %}{% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{#    {% include 'preloader/styles.html' %}#}
+{#    <meta property="og:image" content="pathpreloader/to/image.jpg">#}
+     <link rel="icon" href="{% static 'img/favicon.ico' %}">
+{#    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">#}
+    <meta name="theme-color" content="#2E90DB">
+    <link rel="stylesheet" href="{% static 'index.css' %}" type="text/css">
+    {% if INSTANCE == 'prod' %}
+      <!-- Yandex.Metrika counter -->
+      <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(51617786, "init", { id:51617786, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/51617786" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+      <!-- /Yandex.Metrika counter -->
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131360836-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-131360836-1');
+      </script>
+    {% endif %}
+</head>
+<body>
+{#    {% include 'preloader/index.html' %}#}
+{#    {% include 'other/cookie-popup.html' %}#}
+    {% include 'header/index.html' %}
+    {% include 'mobile/menu.html' %}
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+    <div class="popup_wrapper popup_wrapper_call">
+        <div class="popup popup_call">
+            <button class="popup-close"></button>
+            <h2 class="popup__title">Заказать звонок</h2>
+            <span class="popup__subtitle">Заполните эту форму, и мы свяжемся с Вами в ближайшее время.</span>
+            <form class="popup__form" id="call-request-form" onsubmit="ym(51617786, 'reachGoal', 'CALLBACK'); ga('send', 'event', 'call_back_form', 'submit'); return true; ">
+                <div class="input-wrapper">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="input-wrapper">
+                    <label for="phone">Номер телефона:</label>
+                    <input type="phone" id="phone" name="phone" required placeholder="+996(xxx)xx-xx-xx">
+                </div>
+                <div class="input-wrapper"><button class="btn btn_blue" id="submit_callback">Отправить заявку</button></div>
+            </form>
+            <div class="popup__footer">
+                Оператор свяжется с Вами в рабочее время с 8:00 до 22:00
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer/index.html' %}
+
+    <script src="{% static 'index.js' %}"></script>
+    {% block extend_js %}{% endblock %}
+</body>
+</html>

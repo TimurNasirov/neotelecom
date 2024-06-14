@@ -1,0 +1,10 @@
+.penv
+*.pyc
+__pycache__
+/static
+/media
+/feed_data
+*.log
+*.pid
+credentials.json
+*.db

@@ -1,0 +1,9 @@
+.idea
+.env
+.denv
+*.sqlite3
+venv/
+.coverage
+.DS_Store
+.vscode/
+*.log

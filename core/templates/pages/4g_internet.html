@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Безлимитный интернет с применением технологии 4G.{% endblock %}
+
+{% block content %}
+<div class="tariffs">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+      <a class="breadcrumbs__item">4G Интернет</a>
+    </div>
+    <div class="mobile-back">
+      <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+    </div>
+    <h1 class="infopage__title">4G Интернет</h1>
+    <h4 class="infopage__subtitle infopage__subtitle_bg">Мы создаем комфортные условия для того, чтобы Вы имели доступ ко всем безграничным возможностям Интернета</h4>
+    <div class="infopage__info">
+      <div class="infopage__info-image">
+        <img src="{% static 'img/4g_place_img.jpg' %}" alt="4g-internet">
+      </div>
+      <div class="infopage__info-content">
+        <p class="infopage__info-text">
+          Выбирайте тарифный план, который подходит именно Вам, и пользуйтесь скоростным интернетом без прерываний и замедлений
+        </p>
+        <p class="infopage__info-text">
+          Мы предоставляем тарифы со скоростью до 10мбит/сек, с функцией подключения NEO TV и SMART TV
+        </p>
+        <a href="{% url 'tariffs' %}#4g" class="btn btn_blue">Выбрать тариф</a>
+      </div>
+    </div>
+    <div class="infopage__links">
+      <h5 class="infopage__links-title">Преимущества 4G Интернета</h5>
+      <div class="infopage__links-grid_wrapper">
+        <div class="infopage__links-grid">
+          <div class="infopage__links-grid-item">
+            <span class="infopage__links-grid-item-title">Беспроводная связь</span>
+            <span class="infopage__links-grid-item-text">Оперативное подключение  за 1-2 дня!</span>
+          </div>
+          <div class="infopage__links-grid-item">
+            <span class="infopage__links-grid-item-title">Безлимитный интернет</span>
+            <span class="infopage__links-grid-item-text">Видео, игры, музыка без ограничений!</span>
+          </div>
+          <div class="infopage__links-grid-item">
+            <span class="infopage__links-grid-item-title">Высокая скорость</span>
+            <span class="infopage__links-grid-item-text">Возможность подключения нескольких устройств одновременно на скорости до 10 Мбит/с!</span>
+          </div>
+          <div class="infopage__links-grid-item">
+            <span class="infopage__links-grid-item-title">Выгодные тарифные планы</span>
+            <span class="infopage__links-grid-item-text">При подключении Интернета, телевидение в подарок!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infopage__image">
+      <h5 class="infopage__links-title">Как это работает</h5>
+      <div class="infopage__image-4g"></div>
+    </div>
+  </div>
+  <div class="infopage__footer_wrapper">
+    <div class="container">
+      <div class="infopage__footer">Для получения более подробной информации Вы можете обратиться в службу информационной поддержки по номеру <a href="tel:0(312)976743" class="link link_blue">0 (312) 97 67 43</a></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

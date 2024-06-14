@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="actions-list">
+  <div class="swiper-wrapper">
+      {% for promotion in promotions %}
+          <div class="swiper-slide">
+            {% include 'actions/action-item.html' %}
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+<div class="mobile-actions-list">
+  <div class="swiper-wrapper">
+      {% for promotion in promotions %}
+          <div class="swiper-slide">
+            {% include 'actions/action-item.html' %}
+          </div>
+      {% endfor %}
+  </div>
+</div>

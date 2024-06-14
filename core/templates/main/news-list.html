@@ -1,0 +1,19 @@
+<div class="news-list">
+    <div class="swiper-wrapper">
+        {% for news_item in news %}
+            <div class="swiper-slide">
+                {% include 'news/news_item.html' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="mobile-news-list">
+    <div class="swiper-wrapper">
+        {% for news_item in news %}
+            <div class="swiper-slide">
+                {% include 'news/news_item.html' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

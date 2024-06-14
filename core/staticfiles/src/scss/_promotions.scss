@@ -1,0 +1,122 @@
+.promotion-list {
+  display: flex;
+  flex-wrap: wrap;
+  .action-item {
+    width: calc(33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    @media screen and(max-width: $endPoint) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.promotions {
+  &__title {
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    color: $textColor;
+    @media screen and(max-width: $endPoint) {
+      font-size: 24px;
+    }
+  }
+  &__no-promotions {
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    color: $grayText;
+    @media screen and(max-width: $endPoint) {
+      font-size: 20px;
+    }
+  }
+}
+
+.promotion-details {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 19px;
+  padding-bottom: 76px;
+  border-bottom: 1px solid #89b7c5;
+  @media screen and(max-width: $endPoint) {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+  &__image {
+    img {
+      @media screen and(max-width: $endPoint) {
+        width: 100%;
+      }
+    }
+  }
+  &__content {
+    margin-left: 32px;
+    @media screen and(max-width: $endPoint) {
+      margin-left: 0;
+    }
+  }
+  &__title {
+    margin: 0;
+    margin-bottom: 13px;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: normal;
+    color: $blue;
+    @media screen and(max-width: $endPoint) {
+      margin-top: 13px;
+      font-size: 20px;
+    }
+  }
+  &__description {
+    font-size: 15px;
+    line-height: 20px;
+    color: $textColor;
+    @media screen and(max-width: $endPoint) {
+      font-size: 10px;
+    }
+  }
+  &__date {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    padding-left: 20px;
+    font-size: 15px;
+    color: #89b7c5;
+    @media screen and(max-width: $endPoint) {
+      font-size: 10px;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      background-image: url(../img/icons/calendar.svg);
+      background-size: cover;
+      transform: translateY(-50%);
+    }
+    @media screen and(max-width: $endPoint) {
+      font-size: 12px;
+    }
+  }
+  &__info {
+    padding: 15px 0;
+    background: #f6f6f6;
+    @media screen and(max-width: $endPoint) {
+      padding: 8px 0;
+    }
+    p {
+      font-size: 15px;
+      line-height: 20px;
+      color: #89b7c5;
+      @media screen and(max-width: $endPoint) {
+        font-size: 10px;
+      }
+    }
+  }
+}

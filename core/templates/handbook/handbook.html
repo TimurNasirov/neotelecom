@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+                <a class="breadcrumbs__item">Справочник</a>
+            </div>
+            <div class="mobile-back">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+            </div>
+        </div>
+        <div class="handbook">
+            <div class="container">
+                <h1 class="handbook__title">Справочник</h1>
+                <span class="handbook__subtitle">Выберите категорию, по которой у Вас возникли вопросы</span>
+                <div class="handbook-categories">
+                    <a href="{% url 'handbook_category' 'gpon' %}" class="handbook-categories__item">
+                        <img class="handbook-categories__item-img" src="{% static 'img/icons/rocket-blue.svg' %}">
+                        <span class="handbook-categories__item-title">GPON Интернет</span>
+                    </a>
+                    <a href="{% url 'handbook_category' 'smart_tv' %}" class="handbook-categories__item">
+                        <img class="handbook-categories__item-img" src="{% static 'img/icons/tv-blue.svg' %}">
+                        <span class="handbook-categories__item-title">Smart TV</span>
+                    </a>
+                    <a href="{% url 'handbook_category' 'neo_tv' %}" class="handbook-categories__item">
+                        <img class="handbook-categories__item-img" src="{% static 'img/icons/smartphone-blue.svg' %}">
+                        <span class="handbook-categories__item-title">NEO TV</span>
+                    </a>
+                    <a href="{% url 'handbook_category' '4g' %}" class="handbook-categories__item">
+                        <img class="handbook-categories__item-img" src="{% static 'img/icons/antenna-blue.svg' %}">
+                        <span class="handbook-categories__item-title">4G Интернет</span>
+                    </a>
+                    <a href="{% url 'handbook_category' 'about_us' %}" class="handbook-categories__item">
+                        <img class="handbook-categories__item-img" src="{% static 'img/icons/resume-blue.svg' %}">
+                        <span class="handbook-categories__item-title">О Компании</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extend_js %}
+  <script src="{% static 'handbook.js' %}"></script>
+{% endblock %}

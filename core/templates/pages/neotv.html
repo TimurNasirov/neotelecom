@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Бесплатно скачать NEO TV для Вашего устройства.{% endblock %}
+
+{% block content %}
+    <div class="tariffs">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+                <a href="#" class="breadcrumbs__item">NEO TV</a>
+            </div>
+            <div class="mobile-back">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+            </div>
+            <h1 class="infopage__title">NEO TV</h1>
+            <h4 class="infopage__subtitle infopage__subtitle_bg">Приложение NEO TV превращает смартфон, планшет или
+                компьютер
+                в настоящий телевизор.</h4>
+            <h4 class="infopage__subtitle">Сразу же после запуска приложения пользователям становятся доступны
+                популярные
+                телеканалы в высоком качестве, множество
+                программ, телешоу и сериалов.</h4>
+            <div class="infopage__links">
+                <h5 class="infopage__links-title">Скачать приложение NEO TV для вашего устройства</h5>
+                <div class="infopage__links-content">
+                    <div class="infopage__links-content-item">
+                        <h6 class="infopage__links-content-item-title">Для компьютера</h6>
+                        <div class="infopage__links-content-item-list">
+                            <a class="infopage__links-content-item-list-link" href="{{ win }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/windows.svg' %}" alt="">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Для пользователей операционной системой Windows</span>
+                            </a>
+                            <a class="infopage__links-content-item-list-link" href="{{ macos }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/apple.svg' %}" alt="">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Для пользователей операционной системой MacOS</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="infopage__links-content-item">
+                        <h6 class="infopage__links-content-item-title">Для Android-устройств (тв-приставки, телефона и
+                            др. устройств)</h6>
+                        <div class="infopage__links-content-item-list">
+                            <a class="infopage__links-content-item-list-link" href="{{ armv7 }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/android.svg' %}" alt="android">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Для процессоров с архитектурой arm v7 (подходит для большинства Android устройств)</span>
+                            </a>
+                            <a class="infopage__links-content-item-list-link" href="{{ armx64 }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/android.svg' %}" alt="android">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Для процессоров с архитектурой arm х64</span>
+                            </a>
+                            <a class="infopage__links-content-item-list-link" href="{{ armx86 }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/android.svg' %}" alt="android">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Для процессоров с архитектурой arm х86</span>
+                            </a>
+                            <a class="infopage__links-content-item-list-link" href="{{ youtube }}" download>
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/icons/you-tube-logo.svg' %}"
+                                         alt="android" width="90px">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">YouTube плеер для тв-приставок</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="infopage__links-content-item">
+                        <h6 class="infopage__links-content-item-title">Play Market</h6>
+                        <div class="infopage__links-content-item-list">
+                            <a class="infopage__links-content-item-list-link"
+                               href="https://play.google.com/store/apps/details?id=com.mobiletvkg.plugin&hl=ru"
+                               target="_blank">
+                                <div class="infopage__links-content-item-list-link-img">
+                                    <img src="{% static 'img/play_market.png' %}" alt="play_market">
+                                </div>
+                                <span class="infopage__links-content-item-list-link-text">Версия для вашего телефона</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infopage__info">
+                <div class="infopage__info-image">
+                    <img src="{% static 'img/neotv_place_img.jpg' %}" alt="NEO TV">
+                </div>
+                <div class="infopage__info-content">
+                    <p class="infopage__info-text">
+                        Вы можете совершенно бесплатно скачать приложение NEO TV и всего за 10 сом в сутки смотреть
+                        любимые телеканалы со смартфона, планшета и компьютера в любое удобное для Вас время
+                    </p>
+                    <a href="{% url 'tariffs' %}#neo" class="btn btn_blue">Подключить тариф</a>
+                </div>
+            </div>
+            <div class="infopage__links">
+                <h5 class="infopage__links-title">Преимущества NEO TV</h5>
+                <div class="infopage__links-grid_wrapper">
+                    <div class="infopage__links-grid">
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Экономичность</span>
+                            <span class="infopage__links-grid-item-text">Приложение не требует высокоскоростного подключения к интернет</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Мультиплатформенность</span>
+                            <span class="infopage__links-grid-item-text">Приложение доступно на всех Windows, MacOS и Android</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Надежность</span>
+                            <span class="infopage__links-grid-item-text">Приложение обеспечивает уверенный просмотр даже при нестабильной, изменяющейся скорости соединения</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Доступность</span>
+                            <span class="infopage__links-grid-item-text">Достаточно подключения к сети интернет от оператора связи Кыргызской Республики</span>
+                        </div>
+                    </div>
+                    <div class="infopage__links-grid">
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Телеканалы на любой вкус</span>
+                            <span class="infopage__links-grid-item-text">Множество популярных телеканалов новостные, развлекательные, спортивные, детские, музыкальные и познавательные телеканалы</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Replay</span>
+                            <span class="infopage__links-grid-item-text">Возможность просмотра программ телепередач за прошедшие двое суток</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">Пауза</span>
+                            <span class="infopage__links-grid-item-text">Возможность приостановить – возо6новить трансляцию телеканала</span>
+                        </div>
+                        <div class="infopage__links-grid-item">
+                            <span class="infopage__links-grid-item-title">EPG</span>
+                            <span class="infopage__links-grid-item-text">Интерактивная программа передач</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infopage__footer_wrapper">
+            <div class="container">
+                <div class="infopage__footer">Для получения более подробной информации Вы можете обратиться в службу
+                    информационной поддержки по номеру <a href="tel:0(312)976743" class="link link_blue">0 (312) 97 67
+                        43</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

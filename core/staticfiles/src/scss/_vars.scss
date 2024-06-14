@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+$containerWidth: 1140px;
+$endPoint: 960px;
+$blue: #2e90db;
+$lightBlueBg: #f6f6f6;
+$textColor: #383838;
+$grayText: #808080;
+$red: #eb5757;
+$defaultTextSize: 15px;
+$headers2level: 17px;
+$headers1level: 20px;
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: url("../fonts/SF-Pro-Display-Bold.woff");
+}
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: url("../fonts/SF-Pro-Display-Medium.woff");
+}
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("../fonts/SF-Pro-Display-Regular.woff");
+}

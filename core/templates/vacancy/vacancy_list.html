@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}NeoTelecom - Вакансии компании.{% endblock %}
+
+{% block content %}
+  <div class="vacancy-page">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'vacancies' %}" class="breadcrumbs__item">Вакансии</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="vacancy-page__title">Вакансии</h1>
+      {% if vacancies %}
+        {% for vacancy in vacancies %}
+            <div class="vacancy-page__list">
+              <div class="vacancy-page__item">
+                <a href="{% url 'vacancy_details' vacancy.pk %}" class="vacancy-page__item-title">{{ vacancy.title }}</a>
+                <div class="vacancy-page__item-description">
+                  {{ vacancy.short_description }}
+                </div>
+                <span class="vacancy-page__item-date">{{ vacancy.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+              </div>
+            </div>
+          {% endfor %}
+      {% else %}
+        <div class="vacancy-page__empty">
+          На данный момент вакансий нет, но Вы можете прислать своё резюме на рассмотрение на почту <a href="mailto:hr@neotelecom.kg">hr@neotelecom.kg</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+

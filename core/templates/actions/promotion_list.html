@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% load thumbnail %}
+
+{% block title %}NeoTelecom - Акции и скидки на цифровое телевидение и интернет.{% endblock %}
+
+{% block content %}
+  <div class="promotions">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+        <a href="{% url 'promotions' %}" class="breadcrumbs__item">Акции</a>
+      </div>
+      <div class="mobile-back">
+        <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+      </div>
+      <h1 class="promotions__title">Акции</h1>
+    {% if not promotions %}
+      <h3 class="promotions__no-promotions">На данный момент не проводится никаких акций.</h3>
+    {% endif %}
+      <div class="promotion-list">
+        {% for promotion in promotions %}
+          {% include 'actions/action-item.html' %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

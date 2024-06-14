@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}NeoTelecom - Оставить заявку на подключение.{% endblock %}
+
+{% block canonical_link %}<link rel="canonical" href="{% url 'join_us' %}" />{% endblock %}
+
+{% block content %}
+    <div class="join-us">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+                <a href="{% url 'join_us' %}" class="breadcrumbs__item">Заявка на подключение</a>
+            </div>
+            <div class="mobile-back">
+                <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+            </div>
+            <h1 class="join-us__title">Заявка на подключение</h1>
+            {% if form %}
+                <form method="post" class="form join-us__form" onsubmit="ym(51617786, 'reachGoal', 'JOIN_US'); ga('send', 'event', 'join_us_form', 'submit'); return true;">
+                    {% csrf_token %}
+                    <div class="join-us__form-radio">
+                        <label class="active" for="gpon"><span>GPON</span><input checked="checked" type="radio" id="gpon" value="gpon" name="form_type"></label>
+                        <label for="4g"><span>4G Интернет</span><input type="radio" id="4g" value="4g" name="form_type"></label>
+                        <label for="smart"><span>Smart TV</span><input type="radio" id="smart" value="smart" name="form_type"></label>
+                        <label for="neo"><span>NEO TV</span><input type="radio" id="neo" value="neo" name="form_type"></label>
+                    </div>
+                    <div class="form_wrapper">
+                        <span class="info">Заполните эту форму и мы свяжемся с Вами в ближайшее время</span>
+                        <div class="input-wrapper">
+                            {{ form.name.label_tag }} {{ form.name }}
+                        </div>
+                        <div class="input-wrapper">
+                            {{ form.phone.label_tag }} {{ form.phone }}
+                        </div>
+                        <div class="input-wrapper">
+                            {{ form.address.label_tag }} {{ form.address }}
+                        </div>
+                        <div class="input-wrapper">
+                            {{ form.ownership.label_tag }} {{ form.ownership }}
+                        </div>
+                        <div class="input-wrapper">
+                            <button class="btn btn_blue">Отправить заявку</button>
+                        </div>
+                    </div>
+                </form>
+            {% else %}
+                <div class="join-us__success">
+                    <svg class="checkmark" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1"
+                            r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10"
+                            points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <div class="join-us__success-text">Ваша заявка принята! В ближайшее время наши операторы с Вами свяжутся.</div>
+                </div>
+            
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock %}
+
+{% block extend_js %}
+    <script src="{% static 'join_us.js' %}"></script>
+{% endblock %}

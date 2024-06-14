@@ -1,0 +1,198 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'banners/index.html' %}
+    {% if promotions.count > 0 %}
+        <section class="actions">
+            <div class="container">
+                <h3 class="section-title">Акции</h3>
+                {% include 'main/actions-list.html' %}
+            </div>
+        </section>
+    {% endif %}
+    <section class="links">
+        <div class="container">
+            <div class="links-list">
+                <a href="/smart-tv/" class="links-list__item">
+                    <img src="{% static 'img/icons/tv-blue.svg' %}" alt="smart_tv" class="links-list__item-img">
+                    <span class="links-list__item-text">Smart TV</span>
+                </a>
+                <a href="/gpon/" class="links-list__item">
+                    <img src="{% static 'img/icons/rocket-blue.svg' %}" alt="gpon" class="links-list__item-img">
+                    <span class="links-list__item-text">GPON Интернет</span>
+                </a>
+                <a href="/4g_internet/" class="links-list__item">
+                    <img src="{% static 'img/icons/antenna-blue.svg' %}" alt="4g internet" class="links-list__item-img">
+                    <span class="links-list__item-text">4G-Интернет</span>
+                </a>
+                <a href="{% url 'join_us' %}" class="links-list__item">
+                    <img src="{% static 'img/icons/touch-blue.svg' %}" alt="join us" class="links-list__item-img">
+                    <span class="links-list__item-text">Подключить услуги</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="news">
+        <div class="container">
+            <h3 class="section-title">Новости</h3>
+            <div class="tab-container">
+                <div class="tab-selector">
+                    <span data-tab-name="all" class="tab-selector-item tab-selector-item_active">Все</span>
+                    <span data-tab-name="media" class="tab-selector-item">Медиа</span>
+                    <span data-tab-name="tech" class="tab-selector-item">Технические</span>
+                </div>
+                <div data-tab-item="all" class="tab-item tab-item_active">
+                    <div class="news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in all_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mobile-news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in all_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div data-tab-item="media" class="tab-item">
+                    <div class="news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in media_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mobile-news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in media_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div data-tab-item="tech" class="tab-item">
+                    <div class="news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in tech_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mobile-news-list">
+                        <div class="swiper-wrapper">
+                            {% for news_item in tech_news %}
+                                <div class="swiper-slide">
+                                    {% include 'news/news_item.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="news__all">
+                <a href="{% url 'news' %}" class="news__all-link">Смотреть все новости</a>
+            </div>
+        </div>
+    </section>
+    <section class="functions">
+        <div class="container">
+            <h3 class="section-title">Круглосуточно</h3>
+            <div class="functions-list">
+                <a href="{% url 'join_us' %}" class="function-item function-item_button function-item_button-blue">Оставить
+                    заявку на подключение</a>
+                <span class="function-item function-item_text">или</span>
+                <a id="call-request" class="function-item function-item_button function-item_button-red">Заказать
+                    звонок</a>
+            </div>
+        </div>
+    </section>
+    <section class="about">
+        <div class="container">
+            <h1 class="section-title">О компании</h1>
+            <div class="about-list">
+                <div class="about-block about-block_light">
+                    <h5 class="about-block__title">О нас</h5>
+                    <div class="about-block__content">
+                        <p>Мы занимаемся подбором, продажей и установкой оборудования для спутникового и эфирного
+                            телевидения, а также
+                            проектированием и установкой систем беспроводного широкополосного доступа в интернет.</p>
+                        <p>Так, первой услугой, предоставляемой компанией, было цифровое телевидение под брендом «Smart
+                            tv», вещающее в
+                            эфирно-кабельном формате и с зоной покрытия по г. Бишкек.</p>
+                        <p>Используя в своей работе только новые технологии и придерживаясь тенденций развития
+                            современного рынка
+                            телевизионного вещания, с 2013... </p>
+                    </div>
+                    <a href="/about_company/" class="about-block__link">Читать</a>
+                </div>
+                <div class="about-block about-block_red">
+                    <h5 class="about-block__title">Контакты и график работ</h5>
+                    <div class="about-block__content">
+                        <div class="about-block__flex">
+                            <div class="about-block__left">
+                                <ul class="about-block__location">
+                                    <li>Кыргызстан</li>
+                                    <li>г. Бишкек, ул. Исакеева 18/3, блок 10</li>
+                                    <li>г. Ош, ул. Навои, 47</li>
+                                </ul>
+                                <ul class="about-block__tel">
+                                    <li>0 (312) 97 67 43</li>
+                                    <li>0 (553) 97 67 43</li>
+                                </ul>
+                                <a href="mailto:support@neotelecom.kg" class="about-block__link about-block__link_mail">support@neotelecom.kg</a>
+                            </div>
+                            <div class="about-block__right">
+                                <div class="about-block__shedule">
+                                    <span class="about-block__shedule-title">Абонентский отдел</span>
+                                    <div class="about-block__shedule-item"><span>Пн-Пт</span><span>9:00-18:00</span>
+                                    </div>
+                                    <div class="about-block__shedule-item"><span>Сб</span><span>9:00-15:00</span></div>
+                                    <div class="about-block__shedule-item"><span>Обед</span><span>13:00-14:00</span>
+                                    </div>
+                                </div>
+                                <div class="about-block__shedule">
+                                    <span class="about-block__shedule-title">Центр поддержки</span>
+                                    <div class="about-block__shedule-item"><span>Пн-Вс</span><span>8:00-22:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extend_js %}
+    <script src="{% static 'main.js' %}"></script>
+    <script>if (!window._teletypeWidget) {
+        window._teletypeWidget = window._teletypeWidget || {};
+        !function () {
+            var t = document.getElementsByTagName("app-teletype-root");
+            if (t.length > 0 && _teletypeWidget.init) return;
+            var d = new Date().getTime();
+            var n = document.createElement("script"), c = document.getElementsByTagName("script")[0];
+            n.id = "teletype-widget-embed", n.src = "https://widget.teletype.app/init.js?_=" + d, n.async = !0, n.setAttribute("data-embed-version", "0.1");
+            c.parentNode.insertBefore(n, c);
+        }();
+        document.addEventListener("teletype.ready", function () {
+            console.log("Teletype ready")
+        });
+        window.teletypeExternalId = "F43hto5MoKy_-4rMVC6W9aRRxyk8BOvOHnaNsnGq6dYiLe4bCN6k_Z1tLSkM4X5v";
+    }</script>
+{% endblock %}

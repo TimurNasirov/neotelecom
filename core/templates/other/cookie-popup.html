@@ -1,0 +1,10 @@
+<div class="cookie-popup cookie-popup_show">
+  <div class="cookie-tooltip">
+    <span>Выберите свое местоположение</span>
+    <div class="cookie-tooltip__mobile">
+      <a href="{% url 'city_switcher' 'bishkek' %}" class="cookie-tooltip__mobile-item {% if request.COOKIES.city == 'bishkek' %}cookie-tooltip__mobile-item_active{% endif %}">Бишкек</a>
+      <span class="cookie-tooltip__mobile-item_line">|</span>
+      <a href="{% url 'city_switcher' 'osh' %}" class="cookie-tooltip__mobile-item {% if request.COOKIES.city == 'osh' %}cookie-tooltip__mobile-item_active{% endif %}">Ош</a>
+    </div>
+  </div>
+</div>

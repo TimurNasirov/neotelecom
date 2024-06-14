@@ -1,0 +1,20 @@
+{% load thumbnail %}
+
+<div class="action-item">
+  <img src="{{ promotion.image|thumbnail_url:'promotions' }}" alt="{{ promotion.title }}" class="action-item__image">
+  <div class="action-item__content">
+    <span class="action-item__title">{{ promotion.title }}</span>
+    <span class="action-item__subtitle">{{ promotion.sub_title }}</span>
+    {% if promotion.bullet_one %}
+      <ul class="action-item__advantages">
+        <li>{{ promotion.bullet_one }}</li>
+        <li>{{ promotion.bullet_two }}</li>
+        <li>{{ promotion.bullet_three }}</li>
+      </ul>
+    {% else %}
+      <span class="action-item__description">{{ promotion.description|safe }}</span>
+    {% endif %}
+    <span class="action-item__price"><b>{{ promotion.price }}</b>{{ promotion.get_price_type_display }}</span>
+    <a href="{% url 'promotion_details' promotion.pk %}" class="btn btn_red">Подробнее</a>
+  </div>
+</div>

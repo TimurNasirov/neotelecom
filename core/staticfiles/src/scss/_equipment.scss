@@ -1,0 +1,92 @@
+.equipment {
+  &__title {
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    color: $textColor;
+    @media screen and(max-width: $endPoint) {
+      font-size: 24px;
+    }
+  }
+  &__info {
+    padding: 15px 0;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: #2e90db;
+    background-color: #f6f6f6;
+    @media screen and(max-width: $endPoint) {
+      padding: 15px 18px;
+      font-size: 10px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    margin: 35px 0;
+    @media screen and(max-width: $endPoint) {
+      flex-direction: column;
+    }
+    &-img {
+      flex-basis: 50%;
+      text-align: center;
+      img {
+        width: 265px;
+        height: 178px;
+        @media screen and(max-width: $endPoint) {
+          width: 161px;
+          height: 114px;
+        }
+      }
+      @media screen and(max-width: $endPoint) {
+        flex-basis: auto;
+        margin-bottom: 30px;
+      }
+    }
+    &-content {
+      flex-basis: 50%;
+      @media screen and(max-width: $endPoint) {
+        flex-basis: auto;
+      }
+    }
+    &-title {
+      margin: 0;
+      margin-bottom: 10px;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 20px;
+      color: #2e90db;
+      @media screen and(max-width: $endPoint) {
+        font-size: 14px;
+      }
+    }
+    &-description {
+      font-size: 15px;
+      line-height: 20px;
+      color: $textColor;
+      @media screen and(max-width: $endPoint) {
+        font-size: 10px;
+      }
+    }
+  }
+  &__footer {
+    padding: 20px 0;
+    background-color: #f6f6f6;
+    p {
+      font-size: 15px;
+      line-height: 20px;
+      color: #89b7c5;
+      @media screen and(max-width: $endPoint) {
+        font-size: 10px;
+      }
+      &:last-child {
+        font-size: 17px;
+        color: #2e90db;
+        @media screen and(max-width: $endPoint) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

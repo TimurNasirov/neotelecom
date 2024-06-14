@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<div>
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="{% url 'main_page' %}" class="breadcrumbs__item">Главная</a>
+      <a href="{% url 'handbook' %}" class="breadcrumbs__item">Справочник</a>
+      <a href="{% url 'handbook_category' category %}" class="breadcrumbs__item">{{ category_title }}</a>
+    </div>
+    <div class="mobile-back">
+      <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="mobile-back__button"></a>
+    </div>
+  </div>
+  <div class="handbook handbook_category">
+    <div class="container">
+      <h1 class="handbook__title">Справочник {{ category_title }}</h1>
+      <div class="handbook-questions">
+        <div class="handbook-questions__list">
+          {% for answer in answers %}
+            <div class="handbook-questions__item">
+              <span class="handbook-questions__item-title">{{ answer.title }}</span>
+              <div class="handbook-questions__item-dropdown">{{ answer.description|safe }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="handbook__footer">
+    <div class="container">
+      <p>Для получения более подробной информации Вы можете обратиться в службу информационной поддержки по номеру <a href="tel:0(312)976743" class="link link_blue">0 (312) 97 67 43</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extend_js %}
+  <script src="{% static 'handbook.js' %}"></script>
+{% endblock %}
